@@ -96,8 +96,10 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
         parkingBoy.park(firstCar);
         //when
-        ParkingTicket secondTicket = parkingBoy.park(secondCar);
+        RuntimeException exception = assertThrows(NoAvailableSlotException.class, () -> {
+            parkingBoy.park(secondCar);
+        });
         //then
-        assertSame(null, secondTicket);
+        assertSame("Not enough position", exception.getMessage());
     }
 }
