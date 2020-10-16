@@ -2,8 +2,7 @@ package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyTest {
     @Test
@@ -53,9 +52,11 @@ class ParkingBoyTest {
         parkingBoy.park(car);
         ParkingTicket wrongTicket = new ParkingTicket();
         //when
-        Car fetchedCar = parkingBoy.fetch(wrongTicket);
+        RuntimeException exception = assertThrows(UnrecognizedTicketException.class, () -> {
+            Car fetchedCar = parkingBoy.fetch(wrongTicket);
+        });
         //then
-        assertSame(null, fetchedCar);
+        assertEquals("Unrecognized parking ticket", exception.getMessage());
     }
     
     @Test
