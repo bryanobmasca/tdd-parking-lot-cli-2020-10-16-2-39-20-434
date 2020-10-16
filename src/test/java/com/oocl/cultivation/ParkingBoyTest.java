@@ -63,6 +63,7 @@ class ParkingBoyTest {
         //given
         Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        parkingBoy.park(car);
         //when
         Car fetchedCar = parkingBoy.fetch(null);
         //then
