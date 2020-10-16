@@ -13,9 +13,15 @@ public class ParkingLot {
     }
 
     public ParkingTicket park(Car car) {
-        ParkingTicket ticket = new ParkingTicket();
-        ticketCarMap.put(ticket, car);
-        return ticket;
+        if (parkingSlot > 0 ) {
+            ParkingTicket ticket = new ParkingTicket();
+            ticketCarMap.put(ticket, car);
+            parkingSlot--;
+            return ticket;
+        }
+        else {
+            return null;
+        }
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
