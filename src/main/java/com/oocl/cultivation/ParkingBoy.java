@@ -13,6 +13,13 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        return parkingLot.fetch(parkingTicket);
+        Car car = parkingLot.fetch(parkingTicket);
+        boolean isTicketValid = car != null;
+        if (isTicketValid){
+            return car;
+        }
+        else{
+            throw new UnrecognizedTicketException("Unrecognized parking ticket");
+        }
     }
 }
