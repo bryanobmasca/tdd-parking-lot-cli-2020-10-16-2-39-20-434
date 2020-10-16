@@ -76,7 +76,7 @@ class ParkingBoyTest {
         Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         ParkingTicket parkingTicket = parkingBoy.park(car);
-        Car fetchedCar = parkingBoy.fetch(parkingTicket);
+        parkingBoy.fetch(parkingTicket);
         //when
         Car secondFetchedCar = parkingBoy.fetch(parkingTicket);
         //then
