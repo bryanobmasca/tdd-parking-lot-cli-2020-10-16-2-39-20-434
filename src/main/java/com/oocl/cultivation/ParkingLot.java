@@ -20,7 +20,7 @@ public class ParkingLot {
             return ticket;
         }
         else {
-            return null;
+            throw new NoAvailableSlotException("Not enough position");
         }
     }
 
