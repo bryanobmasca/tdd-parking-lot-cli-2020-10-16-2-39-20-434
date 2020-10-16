@@ -79,9 +79,11 @@ class ParkingBoyTest {
         ParkingTicket parkingTicket = parkingBoy.park(car);
         parkingBoy.fetch(parkingTicket);
         //when
-        Car secondFetchedCar = parkingBoy.fetch(parkingTicket);
+        RuntimeException exception = assertThrows(UnrecognizedTicketException.class, () ->{
+            parkingBoy.fetch(parkingTicket);
+        });
         //then
-        assertSame(null, secondFetchedCar);
+        assertSame("Unrecognized parking ticket", exception.getMessage());
     }
     
     @Test
