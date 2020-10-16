@@ -63,7 +63,7 @@ class ParkingBoyTest {
         Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         //when
-        Car fetchedCar = parkingBoy.fetch();
+        Car fetchedCar = parkingBoy.fetch(null);
         //then
         assertSame(null, fetchedCar);
     }
