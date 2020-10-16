@@ -66,9 +66,11 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
         parkingBoy.park(car);
         //when
-        Car fetchedCar = parkingBoy.fetch(null);
+        RuntimeException exception = assertThrows(NoTicketExecption.class, ()->{
+            parkingBoy.fetch(null);
+        });
         //then
-        assertSame(null, fetchedCar);
+        assertSame("Please provide your parking ticket", exception.getMessage());
     }
 
     @Test

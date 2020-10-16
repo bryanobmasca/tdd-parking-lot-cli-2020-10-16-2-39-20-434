@@ -15,8 +15,12 @@ public class ParkingBoy {
     public Car fetch(ParkingTicket parkingTicket) {
         Car car = parkingLot.fetch(parkingTicket);
         boolean isTicketValid = car != null;
+        boolean noTicket = parkingTicket == null;
         if (isTicketValid){
             return car;
+        }
+        else if (noTicket){
+            throw new NoTicketExecption("Please provide your parking ticket");
         }
         else{
             throw new UnrecognizedTicketException("Unrecognized parking ticket");
