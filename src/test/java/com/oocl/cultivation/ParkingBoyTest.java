@@ -80,4 +80,17 @@ class ParkingBoyTest {
         //then
         assertSame(null, secondFetchedCar);
     }
+    
+    @Test
+    public void should_return_park_failed_when_parking_given_no_available_parking_lot() {
+        //given
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingTicket parkingTicket = parkingBoy.park(firstCar);
+        //when
+        ParkingTicket secondTicket = parkingBoy.park(secondCar);
+        //then
+        assertSame(null, secondTicket);
+    }
 }
