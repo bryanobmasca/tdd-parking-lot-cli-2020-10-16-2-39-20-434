@@ -1,15 +1,25 @@
 package com.oocl.cultivation;
 
+import java.util.List;
+
 public class ParkingBoy {
 
-    private final ParkingLot parkingLot;
+    private List<ParkingLot> parkingLots;
 
-    public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
+    public ParkingBoy(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
     }
 
     public ParkingTicket park(Car car) {
+        ParkingLot parkingLot = getAvailableParkingLot();
         return parkingLot.park(car);
+    }
+
+    private ParkingLot getAvailableParkingLot() {
+        return parkingLots.stream()
+                .filter(parkingLot -> !parkingLot.isFull())
+                .findFirst()
+                .orElseThrow(() -> new NoAvailableSlotException("Not enough position"));
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
@@ -17,14 +27,14 @@ public class ParkingBoy {
         if (noTicket){
             throw new NoTicketExecption("Please provide your parking ticket");
         }
+        ParkingLot parkingLot = getTicketInParkingLot(parkingTicket);
+        return parkingLot.fetch(parkingTicket);
+    }
 
-        Car car = parkingLot.fetch(parkingTicket);
-        boolean isTicketValid = car != null;
-        if (isTicketValid){
-            return car;
-        }
-        else{
-            throw new UnrecognizedTicketException("Unrecognized parking ticket");
-        }
+    private ParkingLot getTicketInParkingLot(ParkingTicket parkingTicket) {
+        return parkingLots.stream()
+                .filter(p -> p.hasParkingTicket(parkingTicket))
+                .findFirst()
+                .orElseThrow(() -> new UnrecognizedTicketException("Unrecognized parking ticket"));
     }
 }

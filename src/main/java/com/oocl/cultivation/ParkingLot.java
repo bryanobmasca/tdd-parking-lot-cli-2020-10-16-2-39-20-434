@@ -17,7 +17,7 @@ public class ParkingLot {
     }
 
     public ParkingTicket park(Car car) {
-        if (ticketCarMap.size() == capacity) {
+        if (isFull()) {
             throw new NoAvailableSlotException("Not enough position");
         }
         else {
@@ -31,5 +31,13 @@ public class ParkingLot {
         car = ticketCarMap.get(parkingTicket);
         ticketCarMap.remove(parkingTicket);
         return car;
+    }
+
+    public boolean isFull() {
+        return ticketCarMap.size() == capacity;
+    }
+
+    public boolean hasParkingTicket(ParkingTicket parkingTicket) {
+        return ticketCarMap.containsKey(parkingTicket);
     }
 }
