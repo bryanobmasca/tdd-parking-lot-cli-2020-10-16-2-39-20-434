@@ -40,6 +40,6 @@ public class ParkingBoy {
     }
 
     public List<ParkingLot> getParkingLotArrayList() {
-        return null;
+        return parkingLots;
     }
 }

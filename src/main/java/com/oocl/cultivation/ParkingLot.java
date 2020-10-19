@@ -42,6 +42,6 @@ public class ParkingLot {
     }
 
     public int getParkedCarsSize() {
-        return 0;
+        return ticketCarMap.size();
     }
 }
