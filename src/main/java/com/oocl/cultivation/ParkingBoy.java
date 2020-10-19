@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ParkingBoy {
 
-    private List<ParkingLot> parkingLots;
+    protected List<ParkingLot> parkingLots;
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
