@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.Exception.NoAvailableSlotException;
+
 import java.util.HashMap;
 import java.util.Map;
 
