@@ -5,15 +5,17 @@ import com.oocl.cultivation.Exception.NoTicketExecption;
 import com.oocl.cultivation.Exception.UnrecognizedTicketException;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyTest {
     @Test
-    public void should_return_parking_ticket_when_parked_given_a_car_to_parking_boy() {
+    void should_return_parking_ticket_when_parked_given_a_car_to_parking_boy() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(asList(new ParkingLot()));
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot()));
         //when
         ParkingTicket ticket = parkingBoy.park(car);
         //then
@@ -21,10 +23,10 @@ class ParkingBoyTest {
     }
     
     @Test
-    public void should_return_correct_car_when_fetching_given_correct_ticket() {
+    void should_return_correct_car_when_fetching_given_correct_ticket() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(asList(new ParkingLot()));
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot()));
         ParkingTicket parkingTicket = parkingBoy.park(car);
         //when
         Car fetchedCar = parkingBoy.fetch(parkingTicket);
@@ -33,11 +35,11 @@ class ParkingBoyTest {
     }
     
     @Test
-    public void should_two_correct_car_when_fetching_given_two_correct_ticket() {
+    void should_two_correct_car_when_fetching_given_two_correct_ticket() {
         //given
         Car firstCar = new Car();
         Car secondCar = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(asList(new ParkingLot()));
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot()));
         ParkingTicket firstTicket = parkingBoy.park(firstCar);
         ParkingTicket secondTicket = parkingBoy.park(secondCar);
         //when
@@ -49,10 +51,10 @@ class ParkingBoyTest {
     }
     
     @Test
-    public void should_return_no_car_when_fetching_given_a_wrong_ticket() {
+    void should_return_no_car_when_fetching_given_a_wrong_ticket() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(asList(new ParkingLot()));
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot()));
         parkingBoy.park(car);
         ParkingTicket wrongTicket = new ParkingTicket();
         //when
@@ -64,10 +66,10 @@ class ParkingBoyTest {
     }
     
     @Test
-    public void should_return_no_car_when_fetching_given_no_ticket() {
+    void should_return_no_car_when_fetching_given_no_ticket() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(asList(new ParkingLot()));
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot()));
         parkingBoy.park(car);
         //when
         RuntimeException exception = assertThrows(NoTicketExecption.class, ()->{
@@ -78,10 +80,10 @@ class ParkingBoyTest {
     }
 
     @Test
-    public void should_return_no_car_when_fetching_given_ticket_has_been_used() {
+    void should_return_no_car_when_fetching_given_ticket_has_been_used() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(asList(new ParkingLot()));
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot()));
         ParkingTicket parkingTicket = parkingBoy.park(car);
         parkingBoy.fetch(parkingTicket);
         //when
@@ -93,11 +95,11 @@ class ParkingBoyTest {
     }
     
     @Test
-    public void should_return_park_failed_when_parking_given_no_available_parking_lot() {
+    void should_return_park_failed_when_parking_given_no_available_parking_lot() {
         //given
         Car firstCar = new Car();
         Car secondCar = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(asList(new ParkingLot(1)));
+        ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot(1)));
         parkingBoy.park(firstCar);
         //when
         RuntimeException exception = assertThrows(NoAvailableSlotException.class, () -> {
@@ -107,7 +109,7 @@ class ParkingBoyTest {
         assertSame("Not enough position", exception.getMessage());
     }
     @Test
-    public void should_park_in_second_level_when_parking_given_first_level_is_full() {
+    void should_park_in_second_level_when_parking_given_first_level_is_full() {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
