@@ -45,11 +45,11 @@ public class ParkingLot {
         return ticketCarMap.size();
     }
 
-    private int getCapacity(){
+    private int getCapacity() {
         return capacity;
     }
 
-    double getAvailableCapacity(){
+    double getAvailableCapacity() {
         return (double) getCapacity() - getParkedCarsSize();
     }
 
