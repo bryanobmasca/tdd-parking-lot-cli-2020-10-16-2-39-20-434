@@ -109,12 +109,13 @@ class ParkingBoyTest {
     @Test
     public void should_park_in_second_level_when_parking_given_first_level_is_full() {
         //given
-        Car car = new Car();
+        Car car1 = new Car();
+        Car car2 = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(asList(new ParkingLot(1)
                 , new ParkingLot(2)));
         //when
-        parkingBoy.park(car);
-        parkingBoy.park(car);
+        parkingBoy.park(car1);
+        parkingBoy.park(car2);
         //then
         assertEquals(1, parkingBoy.getParkingLotArrayList().get(0).getParkedCarsSize());
         assertEquals(1, parkingBoy.getParkingLotArrayList().get(1).getParkedCarsSize());
