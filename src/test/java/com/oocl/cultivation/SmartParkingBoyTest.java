@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SmartParkingBoyTest {
+class SmartParkingBoyTest {
     @Test
-    public void should_park_in_more_empty_slot_when_parking_given_first_level_capacity_is_2_and_second_level_capacity_is_3() {
+    void should_park_in_more_empty_slot_when_parking_given_first_level_capacity_is_2_and_second_level_capacity_is_3() {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
