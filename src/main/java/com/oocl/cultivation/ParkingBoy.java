@@ -15,15 +15,11 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        ParkingLot parkingLot = getAvailableParkingLot();
-        return parkingLot.park(car);
-    }
-
-    private ParkingLot getAvailableParkingLot() {
         return parkingLots.stream()
                 .filter(parkingLot -> !parkingLot.isFull())
                 .findFirst()
-                .orElseThrow(() -> new NoAvailableSlotException("Not enough position"));
+                .orElseThrow(() -> new NoAvailableSlotException("Not enough position"))
+                .park(car);
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
