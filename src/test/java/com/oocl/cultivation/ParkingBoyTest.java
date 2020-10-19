@@ -9,7 +9,7 @@ class ParkingBoyTest {
     public void should_return_parking_ticket_when_parked_given_a_car_to_parking_boy() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         //when
         ParkingTicket ticket = parkingBoy.park(car);
         //then
@@ -20,7 +20,7 @@ class ParkingBoyTest {
     public void should_return_correct_car_when_fetching_given_correct_ticket() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         ParkingTicket parkingTicket = parkingBoy.park(car);
         //when
         Car fetchedCar = parkingBoy.fetch(parkingTicket);
@@ -33,7 +33,7 @@ class ParkingBoyTest {
         //given
         Car firstCar = new Car();
         Car secondCar = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         ParkingTicket firstTicket = parkingBoy.park(firstCar);
         ParkingTicket secondTicket = parkingBoy.park(secondCar);
         //when
@@ -48,7 +48,7 @@ class ParkingBoyTest {
     public void should_return_no_car_when_fetching_given_a_wrong_ticket() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         parkingBoy.park(car);
         ParkingTicket wrongTicket = new ParkingTicket();
         //when
@@ -63,7 +63,7 @@ class ParkingBoyTest {
     public void should_return_no_car_when_fetching_given_no_ticket() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         parkingBoy.park(car);
         //when
         RuntimeException exception = assertThrows(NoTicketExecption.class, ()->{
@@ -77,7 +77,7 @@ class ParkingBoyTest {
     public void should_return_no_car_when_fetching_given_ticket_has_been_used() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         ParkingTicket parkingTicket = parkingBoy.park(car);
         parkingBoy.fetch(parkingTicket);
         //when
