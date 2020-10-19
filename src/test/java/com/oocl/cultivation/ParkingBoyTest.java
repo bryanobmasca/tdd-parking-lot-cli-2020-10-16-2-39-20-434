@@ -105,4 +105,18 @@ class ParkingBoyTest {
         //then
         assertSame("Not enough position", exception.getMessage());
     }
+    @Test
+    public void should_park_in_second_level_when_parking_given_first_level_is_full() {
+        //given
+        Car car = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy(asList(new ParkingLot(1)
+                , new ParkingLot(2)));
+        //when
+        parkingBoy.park(car);
+        parkingBoy.park(car);
+        //then
+        assertEquals(1, parkingBoy.getParkingLotArrayList().get(0).getParkedCarsSize());
+        assertEquals(1, parkingBoy.getParkingLotArrayList().get(1).getParkedCarsSize());
+    }
+
 }

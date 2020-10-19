@@ -40,4 +40,8 @@ public class ParkingLot {
     public boolean hasParkingTicket(ParkingTicket parkingTicket) {
         return ticketCarMap.containsKey(parkingTicket);
     }
+
+    public int getParkedCarsSize() {
+        return 0;
+    }
 }

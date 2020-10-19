@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import java.lang.ref.Reference;
 import java.util.List;
 
 public class ParkingBoy {
@@ -36,5 +37,9 @@ public class ParkingBoy {
                 .filter(p -> p.hasParkingTicket(parkingTicket))
                 .findFirst()
                 .orElseThrow(() -> new UnrecognizedTicketException("Unrecognized parking ticket"));
+    }
+
+    public List<ParkingLot> getParkingLotArrayList() {
+        return null;
     }
 }
