@@ -17,14 +17,13 @@ public class ParkingLot {
     }
 
     public ParkingTicket park(Car car) {
-        if (capacity > 0 ) {
-            ParkingTicket ticket = new ParkingTicket();
-            ticketCarMap.put(ticket, car);
-            capacity--;
-            return ticket;
+        if (ticketCarMap.size() == capacity) {
+            throw new NoAvailableSlotException("Not enough position");
         }
         else {
-            throw new NoAvailableSlotException("Not enough position");
+            ParkingTicket ticket = new ParkingTicket();
+            ticketCarMap.put(ticket, car);
+            return ticket;
         }
     }
 
