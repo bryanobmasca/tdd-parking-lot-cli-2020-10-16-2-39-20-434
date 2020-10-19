@@ -15,28 +15,27 @@ public class ParkingLot {
         this.capacity = 10;
     }
 
-    public ParkingTicket park(Car car) {
+    ParkingTicket park(Car car) {
         if (isFull()) {
             throw new NoAvailableSlotException("Not enough position");
-        }
-        else {
+        } else {
             ParkingTicket ticket = new ParkingTicket();
             ticketCarMap.put(ticket, car);
             return ticket;
         }
     }
 
-    public Car fetch(ParkingTicket parkingTicket) {
+    Car fetch(ParkingTicket parkingTicket) {
         Car car = ticketCarMap.get(parkingTicket);
         ticketCarMap.remove(parkingTicket);
         return car;
     }
 
-    public boolean isFull() {
+    boolean isFull() {
         return ticketCarMap.size() == capacity;
     }
 
-    public boolean hasParkingTicket(ParkingTicket parkingTicket) {
+    boolean hasParkingTicket(ParkingTicket parkingTicket) {
         return ticketCarMap.containsKey(parkingTicket);
     }
 
