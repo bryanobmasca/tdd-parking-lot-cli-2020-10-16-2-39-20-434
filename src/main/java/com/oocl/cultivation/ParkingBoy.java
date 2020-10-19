@@ -27,15 +27,12 @@ public class ParkingBoy {
         if (noTicket){
             throw new NoTicketExecption("Please provide your parking ticket");
         }
-        ParkingLot parkingLot = getTicketInParkingLot(parkingTicket);
-        return parkingLot.fetch(parkingTicket);
-    }
 
-    private ParkingLot getTicketInParkingLot(ParkingTicket parkingTicket) {
         return parkingLots.stream()
                 .filter(p -> p.hasParkingTicket(parkingTicket))
                 .findFirst()
-                .orElseThrow(() -> new UnrecognizedTicketException("Unrecognized parking ticket"));
+                .orElseThrow(() -> new UnrecognizedTicketException("Unrecognized parking ticket"))
+                .fetch(parkingTicket);
     }
 
     public List<ParkingLot> getParkingLotArrayList() {
