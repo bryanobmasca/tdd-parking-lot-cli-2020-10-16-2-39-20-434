@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
+    private static final int DEFAULT_CAPACITY = 10;
     private final int capacity;
     private final Map<ParkingTicket, Car> ticketCarMap = new HashMap<>();
 
@@ -12,7 +13,7 @@ public class ParkingLot {
     }
 
     public ParkingLot() {
-        this.capacity = 10;
+        this.capacity = DEFAULT_CAPACITY;
     }
 
     ParkingTicket park(Car car) {
