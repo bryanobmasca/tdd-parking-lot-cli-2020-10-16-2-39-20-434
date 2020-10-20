@@ -1,13 +1,20 @@
 package com.oocl.cultivation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceManager {
-    public void addToManagementList(ParkingBoy parkingBoy) {
+    private List<ParkingBoy> managementList;
 
+    public ServiceManager() {
+        managementList = new ArrayList<>();
+    }
+
+    public void addToManagementList(ParkingBoy parkingBoy) {
+        managementList.add(parkingBoy);
     }
 
     public List<ParkingBoy> getManagementList() {
-        return null;
+        return managementList;
     }
 }
