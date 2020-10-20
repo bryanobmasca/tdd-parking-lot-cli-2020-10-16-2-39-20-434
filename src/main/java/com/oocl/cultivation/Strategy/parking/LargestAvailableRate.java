@@ -1,18 +1,19 @@
-package com.oocl.cultivation.Strategy;
+package com.oocl.cultivation.Strategy.parking;
 
 import com.oocl.cultivation.Car;
 import com.oocl.cultivation.Exception.NoAvailableSlotException;
 import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.ParkingTicket;
+import com.oocl.cultivation.Strategy.Parking;
 
+import java.util.Comparator;
 import java.util.List;
 
-public class SequentialParking implements Parking{
+public class LargestAvailableRate implements Parking {
     @Override
     public ParkingTicket park(Car car, List<ParkingLot> parkingLots) {
         return parkingLots.stream()
-                .filter(parkingLot -> !parkingLot.isFull())
-                .findFirst()
+                .max(Comparator.comparingDouble(ParkingLot::getAvailablePositionRate))
                 .orElseThrow(NoAvailableSlotException::new)
                 .park(car);
     }

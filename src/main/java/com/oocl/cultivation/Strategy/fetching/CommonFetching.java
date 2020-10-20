@@ -1,10 +1,11 @@
-package com.oocl.cultivation.Strategy;
+package com.oocl.cultivation.Strategy.fetching;
 
 import com.oocl.cultivation.Car;
 import com.oocl.cultivation.Exception.NoTicketException;
 import com.oocl.cultivation.Exception.UnrecognizedTicketException;
 import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.ParkingTicket;
+import com.oocl.cultivation.Strategy.Fetching;
 
 import java.util.List;
 

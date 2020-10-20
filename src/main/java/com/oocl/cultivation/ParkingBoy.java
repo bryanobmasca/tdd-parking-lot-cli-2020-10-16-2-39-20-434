@@ -1,9 +1,9 @@
 package com.oocl.cultivation;
 
-import com.oocl.cultivation.Strategy.CommonFetching;
+import com.oocl.cultivation.Strategy.fetching.CommonFetching;
 import com.oocl.cultivation.Strategy.Fetching;
 import com.oocl.cultivation.Strategy.Parking;
-import com.oocl.cultivation.Strategy.SequentialParking;
+import com.oocl.cultivation.Strategy.parking.SequentialParking;
 
 import java.util.List;
 
