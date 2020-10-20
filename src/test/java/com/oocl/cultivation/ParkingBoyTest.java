@@ -122,5 +122,4 @@ class ParkingBoyTest {
         assertEquals(1, parkingBoy.getParkingLotArrayList().get(0).getParkedCarsSize());
         assertEquals(1, parkingBoy.getParkingLotArrayList().get(1).getParkedCarsSize());
     }
-
 }

@@ -18,13 +18,9 @@ public class ParkingLot {
     }
 
     ParkingTicket park(Car car) {
-        if (isFull()) {
-            throw new NoAvailableSlotException("Not enough position");
-        } else {
-            ParkingTicket ticket = new ParkingTicket();
-            ticketCarMap.put(ticket, car);
-            return ticket;
-        }
+        ParkingTicket ticket = new ParkingTicket();
+        ticketCarMap.put(ticket, car);
+        return ticket;
     }
 
     Car fetch(ParkingTicket parkingTicket) {
