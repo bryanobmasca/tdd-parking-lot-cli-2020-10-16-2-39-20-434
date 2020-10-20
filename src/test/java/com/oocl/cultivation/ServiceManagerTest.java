@@ -49,7 +49,7 @@ public class ServiceManagerTest {
     }
 
     @Test
-    void should_return_ticket_when_parking_given_a_car_to_service_manager(){
+    void should_return_ticket_when_parking_given_a_car_to_service_manager() {
         //given
         Car car = new Car();
         ServiceManager serviceManager = new ServiceManager(asList(new ParkingLot()));
@@ -57,5 +57,17 @@ public class ServiceManagerTest {
         ParkingTicket parkingTicket = serviceManager.park(car);
         //then
         assertNotNull(parkingTicket);
+    }
+
+    @Test
+    void should_return_car_when_parking_given_correct_ticket_to_service_manager() {
+        //given
+        Car car = new Car();
+        ServiceManager serviceManager = new ServiceManager(asList(new ParkingLot()));
+        ParkingTicket parkingTicket = serviceManager.park(car);
+        //when
+        Car actualCar = serviceManager.fetch(parkingTicket);
+        //then
+        assertSame(car, actualCar);
     }
 }
