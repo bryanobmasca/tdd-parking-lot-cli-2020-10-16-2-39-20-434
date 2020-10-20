@@ -7,10 +7,11 @@ import com.oocl.cultivation.Exception.UnrecognizedTicketException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceManager {
+public class ServiceManager extends ParkingBoy{
     private List<ParkingBoy> managementList;
 
-    public ServiceManager() {
+    public ServiceManager(List<ParkingLot> parkingLots) {
+        super(parkingLots);
         managementList = new ArrayList<>();
     }
 
