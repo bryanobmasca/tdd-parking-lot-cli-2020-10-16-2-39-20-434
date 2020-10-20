@@ -21,7 +21,7 @@ class ParkingBoyTest {
         //then
         assertNotNull(ticket);
     }
-    
+
     @Test
     void should_return_correct_car_when_fetching_given_correct_ticket() {
         //given
@@ -33,7 +33,7 @@ class ParkingBoyTest {
         //then
         assertSame(car, fetchedCar);
     }
-    
+
     @Test
     void should_two_correct_car_when_fetching_given_two_correct_ticket() {
         //given
@@ -49,7 +49,7 @@ class ParkingBoyTest {
         assertSame(firstCar, firstFetchedCar);
         assertSame(secondCar, secondFetchedCar);
     }
-    
+
     @Test
     void should_return_no_car_when_fetching_given_a_wrong_ticket() {
         //given
@@ -64,7 +64,7 @@ class ParkingBoyTest {
         //then
         assertEquals("Unrecognized parking ticket", exception.getMessage());
     }
-    
+
     @Test
     void should_return_no_car_when_fetching_given_no_ticket() {
         //given
@@ -72,7 +72,7 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot()));
         parkingBoy.park(car);
         //when
-        RuntimeException exception = assertThrows(NoTicketExecption.class, ()->{
+        RuntimeException exception = assertThrows(NoTicketExecption.class, () -> {
             parkingBoy.fetch(null);
         });
         //then
@@ -87,13 +87,13 @@ class ParkingBoyTest {
         ParkingTicket parkingTicket = parkingBoy.park(car);
         parkingBoy.fetch(parkingTicket);
         //when
-        RuntimeException exception = assertThrows(UnrecognizedTicketException.class, () ->{
+        RuntimeException exception = assertThrows(UnrecognizedTicketException.class, () -> {
             parkingBoy.fetch(parkingTicket);
         });
         //then
         assertSame("Unrecognized parking ticket", exception.getMessage());
     }
-    
+
     @Test
     void should_return_park_failed_when_parking_given_no_available_parking_lot() {
         //given
@@ -108,6 +108,7 @@ class ParkingBoyTest {
         //then
         assertSame("Not enough position", exception.getMessage());
     }
+
     @Test
     void should_park_in_second_level_when_parking_given_first_level_is_full() {
         //given

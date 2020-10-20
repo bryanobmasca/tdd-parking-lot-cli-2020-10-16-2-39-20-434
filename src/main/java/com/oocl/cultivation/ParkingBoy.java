@@ -24,7 +24,7 @@ public class ParkingBoy {
 
     public Car fetch(ParkingTicket parkingTicket) {
         boolean noTicket = parkingTicket == null;
-        if (noTicket){
+        if (noTicket) {
             throw new NoTicketExecption();
         }
 
