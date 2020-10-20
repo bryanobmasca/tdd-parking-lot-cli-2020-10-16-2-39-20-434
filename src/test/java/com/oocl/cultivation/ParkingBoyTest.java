@@ -1,7 +1,7 @@
 package com.oocl.cultivation;
 
 import com.oocl.cultivation.Exception.NoAvailableSlotException;
-import com.oocl.cultivation.Exception.NoTicketExecption;
+import com.oocl.cultivation.Exception.NoTicketException;
 import com.oocl.cultivation.Exception.UnrecognizedTicketException;
 import org.junit.jupiter.api.Test;
 
@@ -72,7 +72,7 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(Collections.singletonList(new ParkingLot()));
         parkingBoy.park(car);
         //when
-        RuntimeException exception = assertThrows(NoTicketExecption.class, () -> {
+        RuntimeException exception = assertThrows(NoTicketException.class, () -> {
             parkingBoy.fetch(null);
         });
         //then

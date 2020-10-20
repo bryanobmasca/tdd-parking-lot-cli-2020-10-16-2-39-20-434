@@ -1,7 +1,7 @@
 package com.oocl.cultivation;
 
 import com.oocl.cultivation.Exception.NoAvailableSlotException;
-import com.oocl.cultivation.Exception.NoTicketExecption;
+import com.oocl.cultivation.Exception.NoTicketException;
 import com.oocl.cultivation.Exception.UnrecognizedTicketException;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class ParkingBoy {
     public Car fetch(ParkingTicket parkingTicket) {
         boolean noTicket = parkingTicket == null;
         if (noTicket) {
-            throw new NoTicketExecption();
+            throw new NoTicketException();
         }
 
         return parkingLots.stream()
