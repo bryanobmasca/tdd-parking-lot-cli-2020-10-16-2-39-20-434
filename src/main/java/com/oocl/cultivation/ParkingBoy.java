@@ -18,20 +18,20 @@ public class ParkingBoy {
         return parkingLots.stream()
                 .filter(parkingLot -> !parkingLot.isFull())
                 .findFirst()
-                .orElseThrow(() -> new NoAvailableSlotException("Not enough position"))
+                .orElseThrow(NoAvailableSlotException::new)
                 .park(car);
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
         boolean noTicket = parkingTicket == null;
         if (noTicket){
-            throw new NoTicketExecption("Please provide your parking ticket");
+            throw new NoTicketExecption();
         }
 
         return parkingLots.stream()
                 .filter(p -> p.hasParkingTicket(parkingTicket))
                 .findFirst()
-                .orElseThrow(() -> new UnrecognizedTicketException("Unrecognized parking ticket"))
+                .orElseThrow(() -> new UnrecognizedTicketException())
                 .fetch(parkingTicket);
     }
 

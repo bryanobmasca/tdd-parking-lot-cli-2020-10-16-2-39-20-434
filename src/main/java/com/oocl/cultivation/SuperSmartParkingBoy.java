@@ -15,7 +15,7 @@ public class SuperSmartParkingBoy extends ParkingBoy{
     public ParkingTicket park(Car car) {
         return parkingLots.stream()
                 .max(Comparator.comparingDouble(ParkingLot::getAvailablePositionRate))
-                .orElseThrow(() -> new NoAvailableSlotException("Not enough position"))
+                .orElseThrow(NoAvailableSlotException::new)
                 .park(car);
     }
 }

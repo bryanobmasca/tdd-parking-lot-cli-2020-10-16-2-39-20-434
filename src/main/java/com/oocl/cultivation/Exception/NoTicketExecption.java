@@ -1,7 +1,7 @@
 package com.oocl.cultivation.Exception;
 
 public class NoTicketExecption extends RuntimeException{
-    public NoTicketExecption(String message) {
-        super(message);
+    public NoTicketExecption() {
+        super("Please provide your parking ticket");
     }
 }
