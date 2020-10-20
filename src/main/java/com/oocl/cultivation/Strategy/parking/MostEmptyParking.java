@@ -13,7 +13,7 @@ public class MostEmptyParking implements Parking {
     @Override
     public ParkingTicket park(Car car, List<ParkingLot> parkingLots) {
         return parkingLots.stream()
-                .max(Comparator.comparingDouble(ParkingLot::getAvailableCapacity))
+                .max(Comparator.comparingInt(ParkingLot::getAvailableCapacity))
                 .orElseThrow(NoAvailableSlotException::new)
                 .park(car);
     }
