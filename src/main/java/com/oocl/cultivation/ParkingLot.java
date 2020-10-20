@@ -22,7 +22,7 @@ public class ParkingLot {
         return ticket;
     }
 
-    Car fetch(ParkingTicket parkingTicket) {
+    public Car fetch(ParkingTicket parkingTicket) {
         Car car = ticketCarMap.get(parkingTicket);
         ticketCarMap.remove(parkingTicket);
         return car;
@@ -32,7 +32,7 @@ public class ParkingLot {
         return ticketCarMap.size() == capacity;
     }
 
-    boolean hasParkingTicket(ParkingTicket parkingTicket) {
+    public boolean hasParkingTicket(ParkingTicket parkingTicket) {
         return ticketCarMap.containsKey(parkingTicket);
     }
 
