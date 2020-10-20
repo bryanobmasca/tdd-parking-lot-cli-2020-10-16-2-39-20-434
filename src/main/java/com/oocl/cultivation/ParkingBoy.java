@@ -1,38 +1,31 @@
 package com.oocl.cultivation;
 
-import com.oocl.cultivation.Exception.NoAvailableSlotException;
-import com.oocl.cultivation.Exception.NoTicketException;
-import com.oocl.cultivation.Exception.UnrecognizedTicketException;
+import com.oocl.cultivation.Strategy.CommonFetching;
+import com.oocl.cultivation.Strategy.Fetching;
+import com.oocl.cultivation.Strategy.Parking;
+import com.oocl.cultivation.Strategy.SequentialParking;
 
 import java.util.List;
 
 public class ParkingBoy {
 
     protected List<ParkingLot> parkingLots;
+    private final Parking parking;
+    private final Fetching fetching;
+
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
+        parking = new SequentialParking();
+        fetching = new CommonFetching();
     }
 
     public ParkingTicket park(Car car) {
-        return parkingLots.stream()
-                .filter(parkingLot -> !parkingLot.isFull())
-                .findFirst()
-                .orElseThrow(NoAvailableSlotException::new)
-                .park(car);
+        return parking.park(car, parkingLots);
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        boolean noTicket = parkingTicket == null;
-        if (noTicket) {
-            throw new NoTicketException();
-        }
-
-        return parkingLots.stream()
-                .filter(p -> p.hasParkingTicket(parkingTicket))
-                .findFirst()
-                .orElseThrow(() -> new UnrecognizedTicketException())
-                .fetch(parkingTicket);
+        return fetching.fetch(parkingTicket, parkingLots);
     }
 
     public List<ParkingLot> getParkingLotArrayList() {
