@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.Exception.NoParkingBoyException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,10 @@ public class ServiceManager {
     }
 
     public ParkingTicket assignToParkCar(ParkingBoy parkingBoy, Car car) {
-        return null;
+        return managementList.stream()
+                .filter(parkingBoy1 -> parkingBoy1 == parkingBoy)
+                .findFirst()
+                .orElseThrow(NoParkingBoyException::new)
+                .park(car);
     }
 }
