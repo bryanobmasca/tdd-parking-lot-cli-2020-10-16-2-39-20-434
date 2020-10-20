@@ -1,20 +1,17 @@
 package com.oocl.cultivation;
 
-import com.oocl.cultivation.Exception.NoAvailableSlotException;
+import com.oocl.cultivation.Strategy.MostEmptyParking;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class SmartParkingBoy extends ParkingBoy {
     public SmartParkingBoy(List<ParkingLot> parkingLots) {
         super(parkingLots);
+        parking = new MostEmptyParking();
     }
 
     @Override
     public ParkingTicket park(Car car) {
-        return parkingLots.stream()
-                .max(Comparator.comparingDouble(ParkingLot::getAvailableCapacity))
-                .orElseThrow(NoAvailableSlotException::new)
-                .park(car);
+        return parking.park(car, parkingLots);
     }
 }

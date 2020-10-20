@@ -10,8 +10,8 @@ import java.util.List;
 public class ParkingBoy {
 
     protected List<ParkingLot> parkingLots;
-    private final Parking parking;
-    private final Fetching fetching;
+    protected Parking parking;
+    protected final Fetching fetching;
 
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
