@@ -1,6 +1,8 @@
 package com.oocl.cultivation;
 
 import com.oocl.cultivation.Exception.NoParkingBoyException;
+import com.oocl.cultivation.Exception.NoTicketException;
+import com.oocl.cultivation.Exception.UnrecognizedTicketException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,16 @@ public class ServiceManager {
                 .park(car);
     }
 
-    public Car assignToFetchCar(ParkingBoy parkingBoy, Car car) {
-        return null;
+    public Car assignToFetchCar(ParkingBoy parkingBoy, ParkingTicket parkingTicket) {
+        boolean noTicket = parkingTicket == null;
+        if (noTicket) {
+            throw new NoTicketException();
+        }
+
+        return managementList.stream()
+                .filter(parkingBoy1 -> parkingBoy1 == parkingBoy)
+                .findFirst()
+                .orElseThrow(UnrecognizedTicketException::new)
+                .fetch(parkingTicket);
     }
 }

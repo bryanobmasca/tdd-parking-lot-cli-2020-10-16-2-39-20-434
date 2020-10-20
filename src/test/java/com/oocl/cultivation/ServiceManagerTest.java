@@ -43,7 +43,7 @@ public class ServiceManagerTest {
         serviceManager.addToManagementList(parkingBoy);
         ParkingTicket parkingTicket = serviceManager.assignToParkCar(parkingBoy, car);
         //when
-        Car actualCar = serviceManager.assignToFetchCar(parkingBoy, car);
+        Car actualCar = serviceManager.assignToFetchCar(parkingBoy, parkingTicket);
         //then
         assertSame(car, actualCar);
     }
