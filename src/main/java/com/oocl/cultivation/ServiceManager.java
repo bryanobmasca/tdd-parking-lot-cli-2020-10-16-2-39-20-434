@@ -27,4 +27,8 @@ public class ServiceManager {
                 .orElseThrow(NoParkingBoyException::new)
                 .park(car);
     }
+
+    public Car assignToFetchCar(ParkingBoy parkingBoy, Car car) {
+        return null;
+    }
 }
