@@ -7,5 +7,5 @@ import com.oocl.cultivation.ParkingTicket;
 import java.util.List;
 
 public interface Fetching {
-    Car fetch(ParkingTicket parkingTicket, List<ParkingLot> parkingLotList);
+    Car fetch(ParkingTicket parkingTicket, List<ParkingLot> parkingLots);
 }

@@ -16,7 +16,7 @@ public class ParkingLot {
         this.capacity = DEFAULT_CAPACITY;
     }
 
-    ParkingTicket park(Car car) {
+    public ParkingTicket park(Car car) {
         ParkingTicket ticket = new ParkingTicket();
         ticketCarMap.put(ticket, car);
         return ticket;
@@ -28,7 +28,7 @@ public class ParkingLot {
         return car;
     }
 
-    boolean isFull() {
+    public boolean isFull() {
         return ticketCarMap.size() == capacity;
     }
 
@@ -44,11 +44,11 @@ public class ParkingLot {
         return capacity;
     }
 
-    int getAvailableCapacity() {
+    public int getAvailableCapacity() {
         return getCapacity() - getParkedCarsSize();
     }
 
-    double getAvailablePositionRate() {
+    public double getAvailablePositionRate() {
         return (double) getAvailableCapacity() / capacity;
     }
 }

@@ -7,5 +7,5 @@ import com.oocl.cultivation.ParkingTicket;
 import java.util.List;
 
 public interface Parking {
-    ParkingTicket park(Car car, List<ParkingLot> parkingLotList);
+    ParkingTicket park(Car car, List<ParkingLot> parkingLots);
 }
