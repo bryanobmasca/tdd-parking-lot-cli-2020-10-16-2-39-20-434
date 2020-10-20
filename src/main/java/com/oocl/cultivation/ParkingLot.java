@@ -1,12 +1,10 @@
 package com.oocl.cultivation;
 
-import com.oocl.cultivation.Exception.NoAvailableSlotException;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    private int capacity;
+    private final int capacity;
     private final Map<ParkingTicket, Car> ticketCarMap = new HashMap<>();
 
     public ParkingLot(int parkingSlot) {
